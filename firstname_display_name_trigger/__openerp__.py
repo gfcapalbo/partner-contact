@@ -28,7 +28,6 @@
     'category': 'Hidden',
     'license': 'AGPL-3',
     'depends': [
-        'account_report_company',
         'partner_firstname',
     ],
     'description': """
