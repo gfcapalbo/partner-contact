@@ -37,8 +37,7 @@ class ResPartner(orm.Model):
             ids = [ids]
         res = []
         for record in self.browse(cr, uid, ids, context=context):
-            names = (record.lastname, record.firstname)
-            name = u" ".join([s for s in names if s])
+            name = self._prepare_name_custom(cr, uid, record, context=context)
             if record.parent_id and not record.is_company:
                 name = "%s, %s" % (record.parent_id.name, name)
             if context.get('show_address'):
@@ -57,20 +56,18 @@ class ResPartner(orm.Model):
             lambda self, cr, uid, ids, context=None:
             self.search(cr, uid, [
                 ('id', 'child_of', ids)
-                ]),
+            ]),
             ['parent_id', 'is_company', 'name', 'firstname', 'lastname'],
             10
         )
     }
 
-    # indirection to avoid passing a copy of the overridable method when
-    # declaring the function field
-    _display_name = lambda self, *a, **kw: self._display_name_compute(*a, **kw)
-
     _columns = {
         # extra field to allow ORDER BY to match visible names
         'display_name': fields.function(
-            _display_name,
+            # indirection to avoid passing a copy of the overridable method
+            # when declaring the function field
+            lambda self, *a, **kw: self._display_name_compute(*a, **kw),
             type='char',
             string='Name',
             store=_display_name_store_triggers

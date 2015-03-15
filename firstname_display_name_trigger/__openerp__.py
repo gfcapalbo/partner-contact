@@ -37,7 +37,7 @@ kanban views.
 """,
     'website': 'http://www.camptocamp.com',
     'data': [],
-    'installable': False,
+    'installable': True,
     'auto_install': True,
     'application': False,
 }
