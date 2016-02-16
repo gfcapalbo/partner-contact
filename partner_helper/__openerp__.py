@@ -21,8 +21,8 @@
 
 {
     'name': 'Partner Helper',
-    'version': '0.1',
-    'author': 'Akretion',
+    'version': '8.0.0.1.0',
+    'author': "Akretion,Odoo Community Association (OCA)",
     'maintainer': 'Akretion',
     'category': 'Warehouse',
     'depends': [

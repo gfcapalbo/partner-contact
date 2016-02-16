@@ -3,6 +3,7 @@
 #
 # Authors: Nemry Jonathan
 # Copyright (c) 2014 Acsone SA/NV (http://www.acsone.eu)
+#       2015:       Grupo ESOC <www.grupoesoc.es>
 # All Rights Reserved
 #
 # WARNING: This program as such is intended to be used by professional
@@ -28,8 +29,11 @@
 #
 ##############################################################################
 
-import test_partner_firstname
-
-checks = [
-    test_partner_firstname
-]
+from . import (
+    test_create,
+    test_delete,
+    test_defaults,
+    test_empty,
+    test_name,
+    test_onchange
+)
